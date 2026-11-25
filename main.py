@@ -9,6 +9,8 @@ CHAR_LIMIT = 200
 
 
 def validate(text):
+    if "\n" in text or "\r" in text:
+        raise ValueError("Excuse must be exactly one line, with no newline or carriage-return characters.")
     if not text.strip():
         raise ValueError("Excuse must not be empty or whitespace-only.")
     if len(text) > CHAR_LIMIT:
